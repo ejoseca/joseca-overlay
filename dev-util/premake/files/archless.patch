@@ -1,0 +1,36 @@
+diff -Naur premake-4.4-beta5.orig/build/gmake.unix/Premake4.make premake-4.4-beta5/build/gmake.unix/Premake4.make
+--- premake-4.4-beta5.orig/build/gmake.unix/Premake4.make	2010-11-16 06:29:14.000000000 -0500
++++ premake-4.4-beta5/build/gmake.unix/Premake4.make	2011-04-18 07:24:59.374986001 -0400
+@@ -26,13 +26,12 @@
+   DEFINES   += -DNDEBUG -DLUA_USE_POSIX -DLUA_USE_DLOPEN
+   INCLUDES  += -I../../src/host/lua-5.1.4/src
+   ALL_CPPFLAGS  += $(CPPFLAGS) -MMD -MP $(DEFINES) $(INCLUDES)
+-  ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -Wall -Wextra -Os
+-  ALL_CXXFLAGS  += $(CXXFLAGS) $(ALL_CFLAGS)
++  ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) -Wall -Wextra
+   ALL_RESFLAGS  += $(RESFLAGS) $(DEFINES) $(INCLUDES)
+-  ALL_LDFLAGS   += $(LDFLAGS) -L. -s -rdynamic
++  ALL_LDFLAGS   += $(LDFLAGS) -L. -rdynamic
+   LDDEPS    +=
+   LIBS      += $(LDDEPS) -lm -ldl
+-  LINKCMD    = $(CC) -o $(TARGET) $(OBJECTS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
++  LINKCMD    = $(CC) -o $(TARGET) $(OBJECTS) $(RESOURCES) $(ALL_LDFLAGS) $(LIBS)
+   define PREBUILDCMDS
+   endef
+   define PRELINKCMDS
+@@ -48,13 +47,12 @@
+   DEFINES   += -D_DEBUG -DLUA_USE_POSIX -DLUA_USE_DLOPEN
+   INCLUDES  += -I../../src/host/lua-5.1.4/src
+   ALL_CPPFLAGS  += $(CPPFLAGS) -MMD -MP $(DEFINES) $(INCLUDES)
+-  ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -Wall -Wextra -g
+-  ALL_CXXFLAGS  += $(CXXFLAGS) $(ALL_CFLAGS)
++  ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) -Wall -Wextra -g
+   ALL_RESFLAGS  += $(RESFLAGS) $(DEFINES) $(INCLUDES)
+   ALL_LDFLAGS   += $(LDFLAGS) -L. -rdynamic
+   LDDEPS    +=
+   LIBS      += $(LDDEPS) -lm -ldl
+-  LINKCMD    = $(CC) -o $(TARGET) $(OBJECTS) $(RESOURCES) $(ARCH) $(ALL_LDFLAGS) $(LIBS)
++  LINKCMD    = $(CC) -o $(TARGET) $(OBJECTS) $(RESOURCES) $(ALL_LDFLAGS) $(LIBS)
+   define PREBUILDCMDS
+   endef
+   define PRELINKCMDS
