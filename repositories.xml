@@ -1,0 +1,17 @@
+<?xml version="1.0" ?>
+<!DOCTYPE repositories SYSTEM "http://www.gentoo.org/dtd/repositories.dtd">
+<repositories version="1.0">
+  <repo quality="experimental" status="unofficial">
+    <name>joseca</name>
+    <description lang="en">More ebuilds for Gentoo</description>
+    <homepage>https://github.com/ejoseca/joseca-overlay</homepage>
+      <owner type="person">
+        <email>joseca.izcar@gmail.com</email>
+        <name>José Carlos</name>
+      </owner>
+    <source type="git">https://github.com/ejoseca/joseca-overlay.git</source>
+    <source type="git">git://github.com/ejoseca/joseca-overlay.git</source>
+    <source type="git">git@github.com:ejoseca/joseca-overlay.git</source>
+    <feed>https://github.com/ejoseca/joseca-overlay/commits/master.atom</feed>
+  </repo>
+</repositories>
