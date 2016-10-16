@@ -1,0 +1,24 @@
+--- Box2D/Build/gmake/Testbed.make.orig	2016-10-16 19:01:33.202794674 +0200
++++ Box2D/Build/gmake/Testbed.make	2016-10-16 19:16:23.733290474 +0200
+@@ -26,8 +26,8 @@
+   DEFINES   +=
+   INCLUDES  += -I../..
+   ALL_CPPFLAGS  += $(CPPFLAGS) -MMD -MP $(DEFINES) $(INCLUDES)
+-  ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -g
+-  ALL_CXXFLAGS  += $(CXXFLAGS) $(ALL_CFLAGS)
++  ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) -g
++  ALL_CXXFLAGS  += $(CXXFLAGS) $(ALL_CFLAGS) -std=c++11
+   ALL_RESFLAGS  += $(RESFLAGS) $(DEFINES) $(INCLUDES)
+   ALL_LDFLAGS   += $(LDFLAGS) -Lbin/Debug -L.
+   LDDEPS    += bin/Debug/libBox2D.a bin/Debug/libGLEW.a bin/Debug/libGLFW.a
+@@ -48,8 +48,8 @@
+   DEFINES   += -DNDEBUG
+   INCLUDES  += -I../..
+   ALL_CPPFLAGS  += $(CPPFLAGS) -MMD -MP $(DEFINES) $(INCLUDES)
+-  ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) $(ARCH) -O2
+-  ALL_CXXFLAGS  += $(CXXFLAGS) $(ALL_CFLAGS)
++  ALL_CFLAGS    += $(CFLAGS) $(ALL_CPPFLAGS) -O2
++  ALL_CXXFLAGS  += $(CXXFLAGS) $(ALL_CFLAGS) -std=c++11
+   ALL_RESFLAGS  += $(RESFLAGS) $(DEFINES) $(INCLUDES)
+   ALL_LDFLAGS   += $(LDFLAGS) -Lbin/Release -L. -s
+   LDDEPS    += bin/Release/libBox2D.a bin/Release/libGLEW.a bin/Release/libGLFW.a
