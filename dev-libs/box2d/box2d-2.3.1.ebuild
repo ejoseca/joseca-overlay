@@ -4,7 +4,7 @@
 
 EAPI=6
 
-inherit eutils
+inherit eutils multilib-minimal
 
 DESCRIPTION="A 2D Physics Engine for Games"
 HOMEPAGE="http://box2d.org/"
@@ -16,7 +16,9 @@ SLOT="0"
 KEYWORDS="amd64 ~x86"
 IUSE=""
 
-DEPEND=">=dev-util/premake-4.4_beta app-arch/unzip"
+DEPEND="app-arch/unzip
+    >=dev-util/premake-4.4_beta
+    >=sys-devel/gcc-4.8.1"
 RDEPEND=""
 
 PATCHES="${FILESDIR}"
@@ -25,14 +27,20 @@ src_prepare() {
 	premake4 gmake
 	#epatch "${FILESDIR}/archless_Box2D.patch"
 	default
+	multilib_copy_sources
 }
 
-src_compile() {
-	emake -C Build/gmake -f Box2D.make config=release
+multilib_src_compile() {
+	make -C Build/gmake -f Box2D.make config=release verbose=1 \
+		ARCH= CFLAGS= CXXFLAGS= || die "BUILDING FAILURE"
 }
 
-src_install() {
-	find Box2D -name '*.h' -exec cp --parents \{\} ${T} \;
-	doheader -r ${T}/Box2D/
+multilib_src_install() {
 	dolib.a Build/gmake/bin/Release/libBox2D.a
+}
+
+multilib_src_install_all() {
+	rm -rf "${T}/Box2D"
+	find Box2D -name '*.h' -exec cp --parents \{\} "${T}" \;
+	doheader -r "${T}/Box2D"
 }

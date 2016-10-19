@@ -1,5 +1,16 @@
 --- Box2D/Build/gmake/Box2D.make.orig	2016-10-16 19:01:33.197794608 +0200
 +++ Box2D/Build/gmake/Box2D.make	2016-10-16 19:04:10.805827693 +0200
+@@ -7,8 +7,8 @@
+   SILENT = @
+ endif
+ 
+-CC = gcc
+-CXX = g++
++#CC = gcc
++#CXX = g++
+ AR = ar
+ 
+ ifndef RESCOMP
 @@ -26,8 +26,8 @@
    DEFINES   +=
    INCLUDES  += -I../..
